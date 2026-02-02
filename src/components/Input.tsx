@@ -1,20 +1,19 @@
-interface InputProps {
-  type?: string;
+interface Props {
+  type: string;
   placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ type = "text", placeholder, value, onChange }: InputProps) => {
+const Input = ({ type, placeholder, value, onChange }: Props) => {
   return (
-    <div className="input-wrapper">
-      <input
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </div>
+    <input
+      className="input"
+      type={type}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    />
   );
 };
 

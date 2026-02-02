@@ -1,9 +1,12 @@
 const SocialLogin = () => {
   return (
     <div className="social-login">
-      <button className="facebook">f</button>
-      <button className="apple"></button>
-      <button className="google">G</button>
+      <p>O continúa con</p>
+      <div className="icons">
+        <button>f</button>
+        <button></button>
+        <button>G</button>
+      </div>
     </div>
   );
 };

@@ -1,64 +1,84 @@
-.login-form {
-  max-width: 380px;
-  margin: auto;
+.login-page {
   display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
-.input-wrapper {
-  position: relative;
+/* IZQUIERDA */
+.login-left {
+  flex: 1;
+  padding: 60px;
 }
 
-.input-wrapper input {
-  width: 100%;
-  padding: 1rem;
-  border-radius: 12px;
-  border: none;
-  background: #f3f3f3;
-  font-size: 1rem;
+.logo {
+  width: 140px;
 }
 
-.password .eye {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
+.subtitle {
+  color: #555;
+}
+
+.register-text span {
+  color: #ff6a00;
+  font-weight: bold;
   cursor: pointer;
 }
 
-.login-btn {
+.illustration {
+  margin-top: 40px;
+  width: 280px;
+}
+
+/* DERECHA */
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  width: 360px;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
   background: #ff6a00;
-  color: white;
-  padding: 1rem;
-  border-radius: 14px;
   border: none;
-  font-weight: bold;
-  font-size: 1rem;
-  box-shadow: 0 0 40px rgba(255, 106, 0, 0.6);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .forgot {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #999;
   text-align: right;
-  font-size: 0.85rem;
-  color: gray;
-}
-
-.divider {
-  text-align: center;
-  color: gray;
 }
 
 .social-login {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+  text-align: center;
+  margin-top: 20px;
 }
 
-.social-login button {
-  width: 44px;
-  height: 44px;
+.icons button {
+  margin: 0 6px;
+  padding: 10px;
   border-radius: 50%;
-  border: none;
-  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  cursor: pointer;
 }

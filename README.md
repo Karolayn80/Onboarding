@@ -71,3 +71,103 @@ export default defineConfig([
   },
 ])
 
+// Documentación:
+// Instalación de Node.js y error de PowerShell
+// Proceso:
+
+// Durante la instalación de Node.js, el sistema presentó un error relacionado con la política de ejecución de scripts en PowerShell, lo cual impedía continuar con la instalación de forma normal.
+
+// Para solucionarlo, se ejecutó el siguiente comando: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+// Este comando ajusta la seguridad de PowerShell permitiendo ejecutar scripts locales y scripts descargados que estén firmados, solo para el usuario actual y sin pedir confirmación.
+
+// Error identificado en PowerShell: “La ejecución de scripts está deshabilitada en este sistema”.
+
+// Creación del proyecto con Vite
+
+// Se procedió a crear el proyecto usando Vite. Inicialmente se presentó un error debido al nombre del proyecto.
+
+// Error encontrado: El nombre del proyecto contenía mayúsculas, lo cual no es permitido por npm/Vite. El problema se solucionó cambiando el nombre a solo minúsculas: compensar_prueba
+
+// Error del compilador (SWC + React Compiler)
+
+// El proyecto estaba configurado con: Vite
+
+// @vitejs/plugin-react-swc
+
+// React Compiler (nuevo compilador de React)
+
+// Actualmente, SWC no es compatible con el nuevo React Compiler, lo que generó errores de compilación.
+
+// Solución aplicada
+
+// Se decidió eliminar SWC y usar Babel, siguiendo estos pasos:
+
+// Desinstalar SWC:
+
+// npm remove @vitejs/plugin-react-swc
+
+
+// Instalar el plugin estándar:
+
+// npm install -D @vitejs/plugin-react
+
+
+// Modificar vite.config.js para que quede así:
+
+// import { defineConfig } from 'vite'
+// import react from '@vitejs/plugin-react'
+
+//  export default defineConfig({
+//  plugins: [react()],
+//  })
+
+
+// Ejecutar el proyecto:
+
+// npm run dev
+
+// Instalación exitosa de dependencias, no se detectaron vulnerabilidades y el proyecto quedó funcionando correctamente con el plugin adecuado.
+
+// Proceso realizado con Git
+// Inicialización del repositorio
+
+// git init
+
+// Configuración del usuario
+
+// git config --global user.name
+
+// git config --global user.email
+
+// Verificación de configuración
+
+// git config --global --list
+
+// Preparación de archivos
+
+// git add .
+
+// Primer commit
+
+// git commit -m "creación del proyecto"
+
+// Cambio de rama principal
+
+// git branch -M main
+
+// Vinculación con GitHub
+
+// git remote add origin
+
+// Verificación del remoto
+
+// git remote -v
+
+// Envío del proyecto a GitHub
+
+// git push -u origin main
+
+// Autenticación vía navegador
+
+// Repositorio subido correctamente
+

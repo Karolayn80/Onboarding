@@ -171,3 +171,5 @@ export default defineConfig([
 
 // Repositorio subido correctamente
 
+// Luego instalo react-router-dom "npm install react-router-dom" en el bash.
+

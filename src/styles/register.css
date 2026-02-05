@@ -11,7 +11,7 @@ body {
   overflow: hidden;
 }
 
-.login-page {
+.register-page {
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -20,7 +20,7 @@ body {
 }
 
 /* COLUMNA IZQUIERDA - Logo y textos */
-.login-left {
+.register-left {
   flex: 1;
   padding: 60px 80px;
   display: flex;
@@ -45,8 +45,8 @@ body {
   max-width: 450px;
 }
 
-/* Bienvenido */
-.login-left h1 {
+/* Regístrate */
+.register-left h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 48px;
   font-weight: 600;
@@ -56,7 +56,7 @@ body {
   letter-spacing: 0%;
 }
 
-/* Ingresa y disfruta */
+/* Te invitamos a crear tu cuenta */
 .subtitle {
   font-family: 'Poppins', sans-serif;
   font-size: 32px;
@@ -67,8 +67,8 @@ body {
   letter-spacing: 0%;
 }
 
-/* Si aún no tienes una cuenta */
-.register-text {
+/* Si ya tienes una cuenta */
+.login-text {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -78,8 +78,8 @@ body {
   margin-top: 0;
 }
 
-/* Registrarte aquí! */
-.register-link {
+/* Iniciar sesión aquí ! */
+.login-link {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -88,7 +88,7 @@ body {
   transition: color 0.2s ease;
 }
 
-.register-link:hover {
+.login-link:hover {
   color: #ff5722;
   text-decoration: underline;
 }
@@ -104,8 +104,8 @@ body {
   height: auto;
 }
 
-/* COLUMNA DERECHA - Formulario de login */
-.login-right {
+/* COLUMNA DERECHA - Formulario de registro */
+.register-right {
   flex: 0 0 600px;
   display: flex;
   align-items: center;
@@ -115,15 +115,15 @@ body {
 }
 
 /* FORMULARIO */
-.login-form {
+.register-form {
   width: 100%;
   max-width: 100%;
   background-color: #ffffff;
   padding: 0;
 }
 
-/* Iniciar sesión */
-.login-title {
+/* Registro */
+.register-title {
   font-family: 'Poppins', sans-serif;
   font-size: 28px;
   font-weight: 500;
@@ -135,10 +135,10 @@ body {
 }
 
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
-/* Email o nombre de usuario */
+/* Labels */
 .input-label {
   display: block;
   font-family: 'Poppins', sans-serif;
@@ -217,28 +217,8 @@ body {
   border-radius: 4px;
 }
 
-/* ¿Olvidó su contraseña? */
-.forgot-password {
-  display: block;
-  text-align: right;
-  font-family: 'Poppins', sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  color: #B0B0B0;
-  text-decoration: none;
-  margin: 12px 0 28px;
-  transition: color 0.2s ease;
-  line-height: 1.4;
-  letter-spacing: 0%;
-}
-
-.forgot-password:hover {
-  color: #ff6b35;
-  text-decoration: underline;
-}
-
-/* BOTÓN LOGIN */
-.login-button {
+/* BOTÓN REGISTRO */
+.register-button {
   width: 100%;
   padding: 16px 24px;
   font-family: 'Poppins', sans-serif;
@@ -252,22 +232,23 @@ body {
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
   margin-bottom: 24px;
+  margin-top: 8px;
   line-height: 1.2;
   letter-spacing: 0%;
 }
 
-.login-button:hover {
+.register-button:hover {
   background: linear-gradient(135deg, #ff5722 0%, #ff7335 100%);
   box-shadow: 0 6px 16px rgba(255, 107, 53, 0.35);
   transform: translateY(-2px);
 }
 
-.login-button:active {
+.register-button:active {
   transform: translateY(0);
   box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
 }
 
-.login-button:focus {
+.register-button:focus {
   outline: 2px solid #ff6b35;
   outline-offset: 2px;
 }
@@ -364,16 +345,16 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 1400px) {
-  .login-left {
+  .register-left {
     padding: 50px 60px;
   }
   
-  .login-right {
+  .register-right {
     flex: 0 0 550px;
     padding: 50px 60px;
   }
   
-  .login-left h1 {
+  .register-left h1 {
     font-size: 42px;
   }
 
@@ -388,16 +369,16 @@ body {
 }
 
 @media (max-width: 1200px) {
-  .login-left {
+  .register-left {
     padding: 40px 50px;
   }
   
-  .login-right {
+  .register-right {
     flex: 0 0 480px;
     padding: 40px 50px;
   }
   
-  .login-left h1 {
+  .register-left h1 {
     font-size: 38px;
   }
 
@@ -409,19 +390,23 @@ body {
     width: 280px;
     left: 38%;
   }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
 }
 
 @media (max-width: 1024px) {
-  .login-page {
+  .register-page {
     flex-direction: column;
   }
 
-  .login-left {
+  .register-left {
     padding: 40px;
     position: relative;
   }
   
-  .login-right {
+  .register-right {
     flex: 1;
     padding: 40px;
   }
@@ -439,12 +424,12 @@ body {
     overflow: auto;
   }
 
-  .login-page {
+  .register-page {
     flex-direction: column;
     height: auto;
   }
 
-  .login-left {
+  .register-left {
     padding: 40px 24px;
     text-align: center;
     min-height: auto;
@@ -455,7 +440,7 @@ body {
     max-width: 100%;
   }
 
-  .login-left h1 {
+  .register-left h1 {
     font-size: 36px;
   }
 
@@ -463,11 +448,11 @@ body {
     font-size: 24px;
   }
 
-  .register-text {
+  .login-text {
     font-size: 14px;
   }
 
-  .register-link {
+  .login-link {
     font-size: 14px;
   }
 
@@ -475,12 +460,12 @@ body {
     display: none;
   }
 
-  .login-right {
+  .register-right {
     padding: 40px 24px;
     background-color: #ffffff;
   }
   
-  .login-form {
+  .register-form {
     max-width: 100%;
   }
   
@@ -488,17 +473,21 @@ body {
     font-size: 16px;
   }
 
-  .login-title {
+  .register-title {
     font-size: 24px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
   }
 }
 
 @media (max-width: 480px) {
-  .login-left {
+  .register-left {
     padding: 30px 20px;
   }
   
-  .login-left h1 {
+  .register-left h1 {
     font-size: 32px;
   }
 
@@ -506,11 +495,11 @@ body {
     font-size: 20px;
   }
   
-  .login-right {
+  .register-right {
     padding: 30px 20px;
   }
   
-  .login-button {
+  .register-button {
     padding: 12px 20px;
     font-size: 15px;
   }
@@ -518,6 +507,10 @@ body {
   .social-btn {
     width: 44px;
     height: 44px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
   }
 }
 
@@ -533,6 +526,6 @@ body {
   }
 }
 
-.login-form {
+.register-form {
   animation: fadeInUp 0.5s ease-out;
 }

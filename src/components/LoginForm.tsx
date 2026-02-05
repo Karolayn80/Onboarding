@@ -13,25 +13,36 @@ const LoginForm = () => {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <h2>Iniciar sesión</h2>
+      <h2 className="login-title">Iniciar sesión</h2>
 
-      <Input
-        type="text"
-        placeholder="Email o nombre de usuario"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <div className="form-group">
+        <label className="input-label">Email o nombre de usuario</label>
+        <Input
+          type="text"
+          placeholder="Email o nombre de usuario"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
 
-      <Input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <div className="form-group">
+        <label className="input-label">Contraseña</label>
+        <Input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          showPasswordToggle={true}
+        />
+      </div>
 
-      <button className="login-button">Iniciar sesión</button>
+      <a href="#" className="forgot-password">
+        ¿Olvidó su contraseña?
+      </a>
 
-      <p className="forgot">Olvidé mi contraseña</p>
+      <button type="submit" className="login-button">
+        Iniciar sesión
+      </button>
 
       <SocialLogin />
     </form>

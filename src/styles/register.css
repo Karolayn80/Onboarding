@@ -88,6 +88,7 @@ body {
 .login-text:first-of-type {
   margin-bottom: 2px;
 }
+
 /* Iniciar sesión aquí ! */
 .login-link {
   font-family: 'Poppins', sans-serif;
@@ -113,6 +114,7 @@ body {
   max-width: 100%;
   height: auto;
 }
+
 /* BOTÓN DE ACCESIBILIDAD */
 .accessibility-btn {
   position: fixed;
@@ -145,14 +147,14 @@ body {
   margin-right: 4px;
 }
 
-/* COLUMNA DERECHA - Formulario más a la izquierda */
+/* COLUMNA DERECHA - Formulario más abajo para ver el texto superior */
 .register-right {
   flex: 0 0 550px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   background-color: #fafafa;
-  padding: 15px 120px 15px 40px;
+  padding: 80px 120px 15px 40px;
   overflow-y: auto;
   max-height: 100vh;
   position: relative;
@@ -167,6 +169,7 @@ body {
   margin-left: 0;
   margin-right: auto;
 }
+
 /* Registro */
 .register-title {
   font-family: 'Poppins', sans-serif;
@@ -586,7 +589,7 @@ body {
   
   .register-right {
     flex: 0 0 530px;
-    padding: 15px 38px;
+    padding: 70px 38px 15px 38px;
   }
   
   .register-left h1 {
@@ -614,7 +617,7 @@ body {
   
   .register-right {
     flex: 0 0 500px;
-    padding: 15px 35px;
+    padding: 60px 35px 15px 35px;
   }
   
   .register-left h1 {

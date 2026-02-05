@@ -1,14 +1,21 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "./Input";
 import SocialLogin from "./SocialLogin";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log({ email, password });
+  };
+
+  const handleForgotPassword = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate("/change-password");
   };
 
   return (
@@ -36,7 +43,7 @@ const LoginForm = () => {
         />
       </div>
 
-      <a href="#" className="forgot-password">
+      <a href="#" className="forgot-password" onClick={handleForgotPassword}>
         ¿Olvidó su contraseña?
       </a>
 

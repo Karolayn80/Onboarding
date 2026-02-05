@@ -173,3 +173,26 @@ export default defineConfig([
 
 // Luego instalo react-router-dom "npm install react-router-dom" en el bash.
 
+// Crear una nueva rama desde la rama principal
+
+// Verificar en qué rama se está trabajando: git branch
+
+// Cambiar a la rama principal en caso de no estar en ella: git checkout main
+
+// Actualizar la rama principal con los últimos cambios del repositorio remoto: git pull origin main
+
+// Crear una nueva rama a partir de la rama principal: git checkout -b feature-nombre
+
+// Confirmar que se está trabajando en la nueva rama creada: git branch
+
+// Agregar los cambios realizados al área de preparación: git add .
+
+// Guardar los cambios en un commit con un mensaje descriptivo: git commit -m "Descripción de la funcionalidad"
+
+// Subir la nueva rama al repositorio en GitHub: git push -u origin feature-nombre
+
+// Ingresar a GitHub y crear un Pull Request comparando la rama feature con la rama main
+
+// Revisar y aprobar el Pull Request para unir los cambios a la rama principal
+
+// Eliminar la rama feature una vez integrada (opcional): git branch -d feature-nombre

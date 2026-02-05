@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "./Input";
 import SocialLogin from "./SocialLogin";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
+  
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
@@ -220,8 +223,32 @@ const RegisterForm = () => {
       return;
     }
 
+    // Si todo es válido, procesar el registro
     console.log({ email, username, phone, password, confirmPassword });
+    
+    // Aquí puedes agregar tu lógica de API si la tienes
+    // Por ejemplo:
+    // try {
+    //   const response = await fetch('/api/register', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ email, username, phone, password })
+    //   });
+    //   
+    //   if (response.ok) {
+    //     alert("¡Registro exitoso! ✓");
+    //     navigate("/login");
+    //   }
+    // } catch (error) {
+    //   console.error('Error en el registro:', error);
+    //   alert("Hubo un error en el registro. Por favor intenta de nuevo.");
+    // }
+    
+    // Por ahora, mostrar mensaje y redirigir
     alert("¡Registro exitoso! ✓");
+    
+    // Redirigir a la página de login
+    navigate("/login");
   };
 
   return (
@@ -346,4 +373,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default RegisterForm;  

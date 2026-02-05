@@ -21,8 +21,9 @@ const Register = () => {
         <div className="welcome-content">
           <h1>Regístrate</h1>
           <p className="subtitle">Te invitamos a crear tu cuenta</p>
+          <p className="login-text">Si ya tienes una cuenta</p>
           <p className="login-text">
-            Si ya tienes una cuenta puedes <span className="login-link" onClick={handleLoginClick}>Iniciar sesión aquí !</span>
+            puedes <span className="login-link" onClick={handleLoginClick}>Iniciar sesión aquí !</span>
           </p>
         </div>
 

@@ -1,4 +1,4 @@
-/* register.css - VERSIÓN COMPLETA CON ACCESIBILIDAD */
+/* register.css - VERSIÓN CON TEXTOS MÁS ABAJO */
 
 * {
   margin: 0;
@@ -27,7 +27,7 @@ body {
   padding: 30px 50px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   background-color: #ffffff;
   position: relative;
 }
@@ -35,7 +35,10 @@ body {
 .logo {
   width: 130px;
   height: auto;
-  margin-bottom: 30px;
+  margin-bottom: 80px;
+  position: absolute;
+  top: 30px;
+  left: 50px;
 }
 
 .welcome-content {
@@ -45,6 +48,7 @@ body {
   justify-content: flex-start;
   padding: 0;
   max-width: 450px;
+  margin-top: 0;
 }
 
 /* Regístrate */
@@ -78,8 +82,12 @@ body {
   line-height: 1.5;
   letter-spacing: 0%;
   margin-top: 0;
+  margin-bottom: 0;
 }
 
+.login-text:first-of-type {
+  margin-bottom: 2px;
+}
 /* Iniciar sesión aquí ! */
 .login-link {
   font-family: 'Poppins', sans-serif;
@@ -95,17 +103,16 @@ body {
   text-decoration: underline;
 }
 
-/* ILUSTRACIÓN MÁS A LA DERECHA */
+/* ILUSTRACIÓN MÁS A LA DERECHA Y MÁS ABAJO */
 .illustration {
   position: absolute;
-  top: 50%;
+  top: 58%;
   left: 55%;
   transform: translateY(-50%);
   width: 300px;
   max-width: 100%;
   height: auto;
 }
-
 /* BOTÓN DE ACCESIBILIDAD */
 .accessibility-btn {
   position: fixed;
@@ -138,14 +145,14 @@ body {
   margin-right: 4px;
 }
 
-/* COLUMNA DERECHA - Formulario compacto */
+/* COLUMNA DERECHA - Formulario más a la izquierda */
 .register-right {
   flex: 0 0 550px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #fafafa;
-  padding: 15px 40px;
+  padding: 15px 120px 15px 40px;
   overflow-y: auto;
   max-height: 100vh;
   position: relative;
@@ -154,11 +161,12 @@ body {
 /* FORMULARIO */
 .register-form {
   width: 100%;
-  max-width: 100%;
+  max-width: 450px;
   background-color: #ffffff;
   padding: 0;
+  margin-left: 0;
+  margin-right: auto;
 }
-
 /* Registro */
 .register-title {
   font-family: 'Poppins', sans-serif;
@@ -407,6 +415,17 @@ body {
   font-weight: 500;
 }
 
+/* CONTADOR DE CARACTERES */
+.character-count {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  color: #6b7280;
+  margin-top: 2px;
+  text-align: right;
+  font-weight: 400;
+}
+
 /* REQUISITOS DE CONTRASEÑA */
 .password-requirements {
   margin-top: 5px;
@@ -560,6 +579,10 @@ body {
   .register-left {
     padding: 30px 45px;
   }
+
+  .logo {
+    left: 45px;
+  }
   
   .register-right {
     flex: 0 0 530px;
@@ -583,6 +606,10 @@ body {
 @media (max-width: 1200px) {
   .register-left {
     padding: 28px 40px;
+  }
+
+  .logo {
+    left: 40px;
   }
   
   .register-right {
@@ -616,6 +643,18 @@ body {
   .register-left {
     padding: 30px;
     position: relative;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 40px;
+  }
+
+  .welcome-content {
+    margin-top: 40px;
   }
   
   .register-right {
@@ -652,6 +691,7 @@ body {
   .welcome-content {
     padding: 15px 0 25px;
     max-width: 100%;
+    margin-top: 20px;
   }
 
   .register-left h1 {
@@ -771,16 +811,6 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-/* CONTADOR DE CARACTERES */
-.character-count {
-  display: block;
-  font-family: 'Poppins', sans-serif;
-  font-size: 10px;
-  color: #6b7280;
-  margin-top: 2px;
-  text-align: right;
-  font-weight: 400;
 }
 
 .register-form {

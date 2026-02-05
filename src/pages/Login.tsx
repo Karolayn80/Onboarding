@@ -21,10 +21,9 @@ const Login = () => {
         <div className="welcome-content">
           <h1>Bienvenido</h1>
           <p className="subtitle">Ingresa y disfruta</p>
-
+          <p className="register-text">Si aún no tienes una cuenta</p>
           <p className="register-text">
-            Si aún no tienes una cuenta<br />
-            puedes <span className="register-link" onClick={handleRegisterClick}>Registrarte aquí</span>
+            puedes <span className="register-link" onClick={handleRegisterClick}>Registrarte aquí !</span>
           </p>
         </div>
 

@@ -57,7 +57,7 @@ const RegisterForm = () => {
     return true;
   };
 
-  // Validación de username
+  // Validación de username con límite de 20 caracteres
   const validateUsername = (username: string): boolean => {
     if (!username) {
       setUsernameError("⚠️ El nombre de usuario es obligatorio");
@@ -65,6 +65,10 @@ const RegisterForm = () => {
     }
     if (username.length < 3) {
       setUsernameError("Debe tener al menos 3 caracteres");
+      return false;
+    }
+    if (username.length > 20) {
+      setUsernameError("Máximo 20 caracteres");
       return false;
     }
     setUsernameError("");
@@ -155,11 +159,12 @@ const RegisterForm = () => {
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setUsername(value);
-    if (usernameError && value.length > 0) {
-      if (value.length >= 3) {
-        setUsernameError("");
-      }
+    // Limitar a 20 caracteres
+    const limitedValue = value.slice(0, 20);
+    setUsername(limitedValue);
+    
+    if (usernameError || limitedValue.length > 0) {
+      validateUsername(limitedValue);
     }
   };
 
@@ -261,12 +266,13 @@ const RegisterForm = () => {
           </label>
           <Input
             type="text"
-            placeholder="Nombre de usuario"
+            placeholder="Nombre de usuario (máx. 20 caracteres)"
             value={username}
             onChange={handleUsernameChange}
           />
+          <span className="character-count">{username.length}/20</span>
           {usernameError && <span className="error-message">{usernameError}</span>}
-          {!usernameError && username && username.length >= 3 && (
+          {!usernameError && username && username.length >= 3 && username.length <= 20 && (
             <span className="success-message">✓ Usuario válido</span>
           )}
         </div>

@@ -772,6 +772,16 @@ body {
     transform: translateY(0);
   }
 }
+/* CONTADOR DE CARACTERES */
+.character-count {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  color: #6b7280;
+  margin-top: 2px;
+  text-align: right;
+  font-weight: 400;
+}
 
 .register-form {
   animation: fadeInUp 0.5s ease-out;

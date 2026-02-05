@@ -1,7 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import RegisterForm from "../components/RegisterForm";
 import "../styles/register.css";
 
 const Register = () => {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="register-page">
       <div className="register-left">
@@ -17,7 +24,7 @@ const Register = () => {
 
           <p className="login-text">
             Si ya tienes una cuenta<br />
-            puedes <span className="login-link">Iniciar sesión aquí !</span>
+            puedes <span className="login-link" onClick={handleLoginClick}>Iniciar sesión aquí !</span>
           </p>
         </div>
 

@@ -5,10 +5,11 @@ interface Props {
   placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: () => void;
   showPasswordToggle?: boolean;
 }
 
-const Input = ({ type, placeholder, value, onChange, showPasswordToggle = false }: Props) => {
+const Input = ({ type, placeholder, value, onChange, onBlur, showPasswordToggle = false }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
   
   const inputType = showPasswordToggle && showPassword ? 'text' : type;
@@ -21,6 +22,7 @@ const Input = ({ type, placeholder, value, onChange, showPasswordToggle = false 
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
       />
       
       {showPasswordToggle && type === 'password' && (

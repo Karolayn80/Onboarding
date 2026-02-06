@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "./Input";
 import SocialLogin from "./SocialLogin";
+import Modal from "./Modal";
+import SuccessModal from "./SuccessModal";
+import { registerUser } from "../services/apiService";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -11,7 +14,7 @@ const RegisterForm = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [fontSize, setFontSize] = useState("normal"); // normal, large, xlarge
+  const [fontSize, setFontSize] = useState("normal");
   
   // Estados para errores
   const [emailError, setEmailError] = useState("");
@@ -19,6 +22,11 @@ const RegisterForm = () => {
   const [phoneError, setPhoneError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+
+  // Estados para los modales
+  const [showModal, setShowModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Función para cambiar tamaño de fuente
   const handleFontSizeChange = () => {
@@ -162,7 +170,6 @@ const RegisterForm = () => {
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Limitar a 20 caracteres
     const limitedValue = value.slice(0, 20);
     setUsername(limitedValue);
     
@@ -173,7 +180,6 @@ const RegisterForm = () => {
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Solo permitir números y limitar a 10 dígitos
     const numericValue = value.replace(/[^0-9]/g, '').slice(0, 10);
     setPhone(numericValue);
     if (phoneError && numericValue.length > 0) {
@@ -187,7 +193,6 @@ const RegisterForm = () => {
     const value = e.target.value;
     setPassword(value);
     if (passwordError) validatePassword(value);
-    // Revalidar confirmación si ya hay algo escrito
     if (confirmPassword) validateConfirmPasswordRealTime(confirmPassword);
   };
 
@@ -207,53 +212,62 @@ const RegisterForm = () => {
     const isPasswordValid = validatePassword(password);
     const isConfirmPasswordValid = validateConfirmPassword(confirmPassword);
 
-    // Si algún campo es inválido, mostrar mensaje general
+    // Si algún campo es inválido, no continuar
     if (!isEmailValid || !isUsernameValid || !isPhoneValid || !isPasswordValid || !isConfirmPasswordValid) {
-      // Crear lista de campos vacíos
-      const emptyFields = [];
-      if (!email) emptyFields.push("Email");
-      if (!username) emptyFields.push("Nombre de usuario");
-      if (!phone) emptyFields.push("Número de celular");
-      if (!password) emptyFields.push("Contraseña");
-      if (!confirmPassword) emptyFields.push("Confirmar contraseña");
-
-      if (emptyFields.length > 0) {
-        alert(`⚠️ Por favor completa los siguientes campos obligatorios:\n\n${emptyFields.join('\n')}`);
-      }
       return;
     }
 
-    // Si todo es válido, procesar el registro
-    console.log({ email, username, phone, password, confirmPassword });
-    
-    // Aquí puedes agregar tu lógica de API si la tienes
-    // Por ejemplo:
-    // try {
-    //   const response = await fetch('/api/register', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ email, username, phone, password })
-    //   });
-    //   
-    //   if (response.ok) {
-    //     alert("¡Registro exitoso! ✓");
-    //     navigate("/login");
-    //   }
-    // } catch (error) {
-    //   console.error('Error en el registro:', error);
-    //   alert("Hubo un error en el registro. Por favor intenta de nuevo.");
-    // }
-    
-    // Por ahora, mostrar mensaje y redirigir
-    alert("¡Registro exitoso! ✓");
-    
-    // Redirigir a la página de login
+    // ✅ Si todos los campos son válidos, abrir el modal de confirmación
+    setShowModal(true);
+  };
+
+  // Función para confirmar el registro desde el modal
+  const handleConfirmRegistration = async () => {
+    setIsLoading(true);
+
+    try {
+      // Llamar a la API de registro
+      const response = await registerUser({
+        email,
+        username,
+        phone,
+        password,
+      });
+
+      if (response.success) {
+        setIsLoading(false);
+        setShowModal(false);
+        
+        // ✅ Mostrar modal de éxito en lugar de alert
+        setShowSuccessModal(true);
+      } else {
+        setIsLoading(false);
+        setShowModal(false);
+        alert(`❌ Error en el registro:\n\n${response.error || 'Por favor intenta de nuevo.'}`);
+      }
+    } catch (error) {
+      console.error('Error en el registro:', error);
+      setIsLoading(false);
+      setShowModal(false);
+      alert("❌ Hubo un error en el registro. Por favor intenta de nuevo.");
+    }
+  };
+
+  // Función para cerrar el modal de confirmación
+  const handleCloseModal = () => {
+    if (!isLoading) {
+      setShowModal(false);
+    }
+  };
+
+  // Función para cerrar el modal de éxito y redirigir al login
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
     navigate("/login");
   };
 
   return (
     <>
-      {/* Botón de accesibilidad */}
       <button 
         type="button"
         className="accessibility-btn" 
@@ -369,8 +383,32 @@ const RegisterForm = () => {
 
         <SocialLogin />
       </form>
+
+      {/* Modal de confirmación */}
+      <Modal
+        isOpen={showModal}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirmRegistration}
+        title="Confirmar Registro"
+        message="Por favor verifica que tus datos sean correctos antes de continuar:"
+        userData={{
+          email,
+          username,
+          phone,
+        }}
+        isLoading={isLoading}
+      />
+
+      {/* Modal de éxito */}
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={handleCloseSuccessModal}
+        title="¡Registro Exitoso!"
+        message="Tu cuenta ha sido creada correctamente. Ahora puedes iniciar sesión con tu cuenta."
+        buttonText="Ir a Iniciar Sesión"
+      />
     </>
   );
 };
 
-export default RegisterForm;  
+export default RegisterForm;

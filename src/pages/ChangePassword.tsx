@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
+import { verifyEmail, changePassword } from "../services/apiService";
 import "../styles/ChangePassword.css";
 
 const ChangePassword = () => {
@@ -11,6 +12,7 @@ const ChangePassword = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [passwordsMatch, setPasswordsMatch] = useState<boolean | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   // Validaciones de contraseña
@@ -22,10 +24,6 @@ const ChangePassword = () => {
 
   const allRequirementsMet = hasMinLength && hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar;
 
-  // Simulación de usuarios registrados
-  const registeredEmails = ["usuario@gmail.com", "test@gmail.com", "admin@gmail.com"];
-
-  // Validar formato de email
   const isValidEmailFormat = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -35,7 +33,7 @@ const ChangePassword = () => {
     return email.toLowerCase().endsWith("@gmail.com");
   };
 
-  const handleVerifyUser = (e: React.FormEvent) => {
+  const handleVerifyUser = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -54,18 +52,26 @@ const ChangePassword = () => {
       return;
     }
 
-    // Verificar si el correo existe
-    const emailExists = registeredEmails.includes(email.toLowerCase());
+    setIsLoading(true);
 
-    if (!emailExists) {
-      setError("Este correo no está registrado en el sistema");
-      return;
+    try {
+      // Verificar si el correo existe en la base de datos
+      const response = await verifyEmail(email);
+
+      if (response.success && response.data?.exists) {
+        setStep(2);
+      } else {
+        setError("Este correo no está registrado en el sistema");
+      }
+    } catch (error) {
+      console.error('Error al verificar el email:', error);
+      setError("Error al verificar el correo. Por favor intenta de nuevo.");
+    } finally {
+      setIsLoading(false);
     }
-
-    setStep(2);
   };
 
-  const handleChangePassword = (e: React.FormEvent) => {
+  const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -85,15 +91,30 @@ const ChangePassword = () => {
       return;
     }
 
-    try {
-      setPasswordsMatch(true);
-      setSuccess(true);
+    setIsLoading(true);
 
-      setTimeout(() => {
-        navigate("/login");
-      }, 2500);
+    try {
+      // Llamar a la API para cambiar la contraseña
+      const response = await changePassword({
+        email,
+        newPassword,
+      });
+
+      if (response.success) {
+        setPasswordsMatch(true);
+        setSuccess(true);
+
+        setTimeout(() => {
+          navigate("/login");
+        }, 2500);
+      } else {
+        setError(response.error || "Error al cambiar la contraseña. Inténtelo de nuevo.");
+      }
     } catch (err) {
+      console.error('Error al cambiar la contraseña:', err);
       setError("Error al cambiar la contraseña. Inténtelo de nuevo.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -110,7 +131,6 @@ const ChangePassword = () => {
     }
   };
 
-  // Mostrar advertencia si el email no es Gmail
   const showGmailWarning = email && isValidEmailFormat(email) && !isGmailEmail(email);
 
   if (success) {
@@ -151,6 +171,7 @@ const ChangePassword = () => {
                 placeholder="ejemplo@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={isLoading}
               />
               {showGmailWarning && (
                 <div className="warning-message">
@@ -161,13 +182,25 @@ const ChangePassword = () => {
             </div>
 
             <div className="button-group">
-              <button type="submit" className="change-button">
-                Continuar
+              <button 
+                type="submit" 
+                className="change-button"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <span className="button-spinner"></span>
+                    Verificando...
+                  </>
+                ) : (
+                  'Continuar'
+                )}
               </button>
               <button
                 type="button"
                 className="cancel-button"
                 onClick={handleCancel}
+                disabled={isLoading}
               >
                 Cancelar
               </button>
@@ -194,27 +227,18 @@ const ChangePassword = () => {
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
                 showPasswordToggle={true}
+                disabled={isLoading}
               />
             </div>
 
             <div className="password-requirements">
               <p className="requirements-title">La contraseña debe contener:</p>
               <ul>
-                <li className={hasMinLength ? "valid" : ""}>
-                  Mínimo 8 caracteres
-                </li>
-                <li className={hasUpperCase ? "valid" : ""}>
-                  Una letra mayúscula
-                </li>
-                <li className={hasLowerCase ? "valid" : ""}>
-                  Una letra minúscula
-                </li>
-                <li className={hasNumber ? "valid" : ""}>
-                  Un número
-                </li>
-                <li className={hasSpecialChar ? "valid" : ""}>
-                  Un carácter especial (!@#$%^&*)
-                </li>
+                <li className={hasMinLength ? "valid" : ""}>Mínimo 8 caracteres</li>
+                <li className={hasUpperCase ? "valid" : ""}>Una letra mayúscula</li>
+                <li className={hasLowerCase ? "valid" : ""}>Una letra minúscula</li>
+                <li className={hasNumber ? "valid" : ""}>Un número</li>
+                <li className={hasSpecialChar ? "valid" : ""}>Un carácter especial (!@#$%^&*)</li>
               </ul>
             </div>
 
@@ -226,16 +250,13 @@ const ChangePassword = () => {
                 value={confirmPassword}
                 onChange={(e) => handleConfirmPasswordChange(e.target.value)}
                 showPasswordToggle={true}
+                disabled={isLoading}
               />
               {passwordsMatch === true && confirmPassword && (
-                <div className="match-message success">
-                  ✓ Las contraseñas coinciden
-                </div>
+                <div className="match-message success">✓ Las contraseñas coinciden</div>
               )}
               {passwordsMatch === false && confirmPassword && (
-                <div className="match-message error">
-                  ✗ Las contraseñas no coinciden
-                </div>
+                <div className="match-message error">✗ Las contraseñas no coinciden</div>
               )}
             </div>
 
@@ -243,14 +264,22 @@ const ChangePassword = () => {
               <button 
                 type="submit" 
                 className="change-button"
-                disabled={!allRequirementsMet || passwordsMatch === false}
+                disabled={!allRequirementsMet || passwordsMatch === false || isLoading}
               >
-                Cambiar contraseña
+                {isLoading ? (
+                  <>
+                    <span className="button-spinner"></span>
+                    Cambiando...
+                  </>
+                ) : (
+                  'Cambiar contraseña'
+                )}
               </button>
               <button
                 type="button"
                 className="cancel-button"
                 onClick={handleCancel}
+                disabled={isLoading}
               >
                 Cancelar
               </button>

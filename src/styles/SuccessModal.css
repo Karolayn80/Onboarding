@@ -1,0 +1,207 @@
+/* SuccessModal.css - Modal de éxito después del registro */
+
+/* Overlay del modal de éxito */
+.success-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease-out;
+  padding: 20px;
+}
+
+/* Contenedor del modal de éxito */
+.success-modal-container {
+  background: white;
+  border-radius: 28px;
+  padding: 56px 48px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  animation: successSlideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-align: center;
+}
+
+@keyframes successSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Icono de éxito */
+.success-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.success-circle-bg {
+  animation: scaleInBg 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+.success-circle {
+  animation: scaleInCircle 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+}
+
+.success-checkmark {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: drawCheckmark 0.6s ease-out 0.4s forwards;
+}
+
+@keyframes scaleInBg {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleInCircle {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes drawCheckmark {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Título del modal de éxito - COLOR NARANJA */
+.success-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #FF6B35;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+  animation: fadeInUp 0.5s ease-out 0.5s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mensaje del modal de éxito */
+.success-message {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #6b7280;
+  margin: 0 0 36px 0;
+  line-height: 1.6;
+  animation: fadeInUp 0.5s ease-out 0.6s both;
+}
+
+/* Botón del modal de éxito - COLOR NARANJA */
+.success-btn {
+  width: 100%;
+  max-width: 280px;
+  padding: 18px 36px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8442 100%);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.35);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: fadeInUp 0.5s ease-out 0.7s both;
+}
+
+.success-btn:hover {
+  background: linear-gradient(135deg, #FF5722 0%, #FF7335 100%);
+  box-shadow: 0 12px 32px rgba(255, 107, 53, 0.45);
+  transform: translateY(-3px);
+}
+
+.success-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+}
+
+.success-btn:focus {
+  outline: 3px solid #FF6B35;
+  outline-offset: 3px;
+}
+
+/* Responsive - Tablets */
+@media (max-width: 768px) {
+  .success-modal-container {
+    padding: 48px 40px;
+    border-radius: 24px;
+  }
+
+  .success-title {
+    font-size: 32px;
+  }
+
+  .success-message {
+    font-size: 16px;
+  }
+
+  .success-btn {
+    font-size: 16px;
+    padding: 16px 32px;
+  }
+}
+
+/* Responsive - Móviles */
+@media (max-width: 480px) {
+  .success-modal-container {
+    padding: 40px 32px;
+    border-radius: 20px;
+  }
+
+  .success-icon svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .success-title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .success-message {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .success-btn {
+    font-size: 15px;
+    padding: 15px 28px;
+    max-width: 100%;
+  }
+}

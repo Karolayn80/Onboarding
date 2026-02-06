@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface DatePickerProps {
   value: string;
@@ -53,7 +53,6 @@ const DatePicker: React.FC<DatePickerProps> = ({ value, onChange }) => {
   const handleDateSelect = (day: number) => {
     const year = currentMonth.getFullYear();
     const month = currentMonth.getMonth();
-    const selectedDate = new Date(year, month, day);
     const formattedDate = `${months[month]} ${day.toString().padStart(2, '0')} del ${year}`;
     onChange(formattedDate);
     setShowCalendar(false);

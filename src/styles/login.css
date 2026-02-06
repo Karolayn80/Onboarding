@@ -102,7 +102,7 @@ body {
   text-decoration: underline;
 }
 
-/* ILUSTRACIÓN - MISMA POSICIÓN QUE REGISTRO */
+/* ILUSTRACIÓN */
 .illustration {
   position: absolute;
   top: 58%;
@@ -113,7 +113,7 @@ body {
   height: auto;
 }
 
-/* COLUMNA DERECHA - MISMA UBICACIÓN QUE REGISTRO */
+/* COLUMNA DERECHA */
 .login-right {
   flex: 0 0 550px;
   display: flex;
@@ -125,7 +125,7 @@ body {
   max-height: 100vh;
 }
 
-/* FORMULARIO - MISMA UBICACIÓN QUE REGISTRO */
+/* FORMULARIO */
 .login-form {
   width: 100%;
   max-width: 450px;

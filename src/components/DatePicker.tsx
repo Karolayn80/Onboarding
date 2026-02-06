@@ -18,7 +18,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ value, onChange }) => {
 
   const daysOfWeek = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
 
-  // Generar lista de años (100 años hacia atrás y 10 hacia adelante)
+  // Generar lista de años 
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 111 }, (_, i) => currentYear + 10 - i);
 

@@ -83,8 +83,8 @@ const SurveyForm = () => {
         if (userEmail) {
           // Enviar email con las respuestas
           const emailContent = `
-RESPUESTAS DE ENCUESTA - COMPENSAR
-====================================
+RESPUESTAS DE ENCUESTA
+=======================
 
 Fecha: ${surveyData.date}
 Pregunta 1: ${surveyData.question1}

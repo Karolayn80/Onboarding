@@ -1,5 +1,3 @@
-// apiService.ts - Versión MOCK (sin backend real)
-
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
 const USE_MOCK = true; // Cambiar a false cuando tengas backend real
 

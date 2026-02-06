@@ -1,0 +1,578 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+.login-page {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-color: #ffffff;
+}
+
+/* COLUMNA IZQUIERDA - Logo y textos */
+.login-left {
+  flex: 1;
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.logo {
+  width: 130px;
+  height: auto;
+  margin-bottom: 80px;
+  position: absolute;
+  top: 30px;
+  left: 50px;
+}
+
+.welcome-content {
+  flex: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+  max-width: 450px;
+  margin-top: 0;
+}
+
+/* Bienvenido */
+.login-left h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 8px;
+  line-height: 1.1;
+  letter-spacing: 0%;
+}
+
+/* Ingresa y disfruta */
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #0D0C0C;
+  margin-bottom: 25px;
+  line-height: 1.2;
+  letter-spacing: 0%;
+}
+
+/* Si aún no tienes una cuenta */
+.register-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #0D0C0C;
+  line-height: 1.5;
+  letter-spacing: 0%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.register-text:first-of-type {
+  margin-bottom: 2px;
+}
+
+/* Registrarte aquí! */
+.register-link {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ff6b35;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.register-link:hover {
+  color: #ff5722;
+  text-decoration: underline;
+}
+
+/* ILUSTRACIÓN - MISMA POSICIÓN QUE REGISTRO */
+.illustration {
+  position: absolute;
+  top: 58%;
+  left: 55%;
+  transform: translateY(-50%);
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* COLUMNA DERECHA - MISMA UBICACIÓN QUE REGISTRO */
+.login-right {
+  flex: 0 0 550px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #fafafa;
+  padding: 15px 120px 15px 40px;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/* FORMULARIO - MISMA UBICACIÓN QUE REGISTRO */
+.login-form {
+  width: 100%;
+  max-width: 450px;
+  background-color: #ffffff;
+  padding: 0;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Iniciar sesión */
+.login-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #0D0C0C;
+  margin-bottom: 20px;
+  text-align: left;
+  line-height: 1.2;
+  letter-spacing: 0%;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+/* Email o nombre de usuario */
+.input-label {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #1F2937;
+  margin-bottom: 5px;
+  line-height: 1.4;
+  letter-spacing: 0%;
+}
+
+/* INPUT WRAPPER */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* INPUTS */
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input::placeholder {
+  font-family: 'Poppins', sans-serif;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.input:focus {
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.input:hover:not(:focus) {
+  border-color: #a0a0a0;
+}
+
+.input-wrapper .input {
+  padding-right: 42px;
+}
+
+/* BOTÓN TOGGLE PASSWORD */
+.password-toggle-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  outline: none;
+}
+
+.password-toggle-btn:hover {
+  color: #374151;
+}
+
+.password-toggle-btn:focus {
+  outline: 2px solid #ff6b35;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ¿Olvidó su contraseña? */
+.forgot-password {
+  display: block;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #B0B0B0;
+  text-decoration: none;
+  margin: 8px 0 16px;
+  transition: color 0.2s ease;
+  line-height: 1.4;
+  letter-spacing: 0%;
+}
+
+.forgot-password:hover {
+  color: #ff6b35;
+  text-decoration: underline;
+}
+
+/* BOTÓN LOGIN */
+.login-button {
+  width: 100%;
+  padding: 11px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #F9F9F9;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8442 100%);
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+  margin-bottom: 14px;
+  line-height: 1.2;
+  letter-spacing: 0%;
+}
+
+.login-button:hover {
+  background: linear-gradient(135deg, #ff5722 0%, #ff7335 100%);
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.35);
+  transform: translateY(-2px);
+}
+
+.login-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
+}
+
+.login-button:focus {
+  outline: 2px solid #ff6b35;
+  outline-offset: 2px;
+}
+
+/* SOCIAL LOGIN */
+.social-login {
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* O continúa con */
+.social-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #B5B5B5;
+  margin-bottom: 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  line-height: 1.2;
+  letter-spacing: 0%;
+}
+
+.social-text::before,
+.social-text::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* BOTONES SOCIALES */
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.social-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.social-btn:active {
+  transform: translateY(0);
+}
+
+.social-btn:focus {
+  outline: 2px solid #ff6b35;
+  outline-offset: 2px;
+}
+
+.social-btn.facebook {
+  color: #1877f2;
+}
+
+.social-btn.facebook:hover {
+  background: #f0f7ff;
+  border-color: #1877f2;
+}
+
+.social-btn.apple {
+  color: #000000;
+}
+
+.social-btn.apple:hover {
+  background: #f5f5f5;
+  border-color: #000000;
+}
+
+.social-btn.google:hover {
+  background: #f0f7ff;
+  border-color: #4285f4;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1400px) {
+  .login-left {
+    padding: 30px 45px;
+  }
+
+  .logo {
+    left: 45px;
+  }
+  
+  .login-right {
+    flex: 0 0 530px;
+    padding: 15px 110px 15px 38px;
+  }
+  
+  .login-left h1 {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+  }
+  
+  .illustration {
+    width: 280px;
+    left: 53%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .login-left {
+    padding: 28px 40px;
+  }
+
+  .logo {
+    left: 40px;
+  }
+  
+  .login-right {
+    flex: 0 0 500px;
+    padding: 15px 100px 15px 35px;
+  }
+  
+  .login-left h1 {
+    font-size: 34px;
+  }
+
+  .subtitle {
+    font-size: 22px;
+  }
+  
+  .illustration {
+    width: 260px;
+    left: 51%;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-left {
+    padding: 30px;
+    position: relative;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 40px;
+  }
+
+  .welcome-content {
+    margin-top: 40px;
+  }
+  
+  .login-right {
+    flex: 1;
+    padding: 30px;
+    justify-content: center;
+  }
+  
+  .illustration {
+    position: static;
+    transform: none;
+    margin: 25px auto 0;
+    width: 240px;
+    left: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+
+  .login-page {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .login-left {
+    padding: 30px 20px;
+    text-align: center;
+    min-height: auto;
+  }
+  
+  .welcome-content {
+    padding: 15px 0 25px;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .login-left h1 {
+    font-size: 30px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .register-text {
+    font-size: 13px;
+  }
+
+  .register-link {
+    font-size: 13px;
+  }
+
+  .illustration {
+    display: none;
+  }
+
+  .login-right {
+    padding: 30px 20px;
+    background-color: #ffffff;
+  }
+  
+  .login-form {
+    max-width: 100%;
+  }
+  
+  .input {
+    font-size: 13px;
+  }
+
+  .login-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-left {
+    padding: 25px 16px;
+  }
+  
+  .login-left h1 {
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+  
+  .login-right {
+    padding: 25px 16px;
+  }
+  
+  .login-button {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+  
+  .social-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* ANIMACIONES */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-form {
+  animation: fadeInUp 0.5s ease-out;
+}
